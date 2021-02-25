@@ -15,9 +15,7 @@ class WebPage extends StatefulWidget {
 
 class _WebPageState extends State<WebPage> {
 
-  final flutterWebViewPlugin = FlutterWebviewPlugin();
-
-
+  FlutterWebviewPlugin flutterWebViewPlugin = FlutterWebviewPlugin();
 
   @override
   void initState() {
@@ -36,40 +34,40 @@ class _WebPageState extends State<WebPage> {
   @override
   Widget build(BuildContext context) {
 
-    return WebviewScaffold(
-        resizeToAvoidBottomInset: true,
-        url: widget.url,
-        // javascriptChannels: jsChannels,
-        mediaPlaybackRequiresUserGesture: false,
-        appBar: AppBar(
-          title: Text(
-            widget.title,
-            style: TextStyle(fontSize: 15),
-          ),
-        ),
-        withZoom: false,
-        withLocalStorage: true,
-        hidden: true,
-        userAgent: widget.userAgent,
-        initialChild: Container(
-          padding: EdgeInsets.only(top: 300),
-          height: Get.height,
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                 crossAxisAlignment: CrossAxisAlignment.center,
-                 mainAxisSize: MainAxisSize.max,
-                 children: [
-                     CircularProgressIndicator(
-                       backgroundColor: Colors.lightBlue,
-                     ),
-                     Text("Aguarde...", style: TextStyle(color: Colors.lightBlue))
-                 ],
-              ),
+    return  WebviewScaffold(
+          resizeToAvoidBottomInset: true,
+          url: widget.url,
+          // javascriptChannels: jsChannels,
+          mediaPlaybackRequiresUserGesture: false,
+          appBar: AppBar(
+            title: Text(
+              widget.title,
+              style: TextStyle(fontSize: 15),
             ),
           ),
-        ),
-    );
+          withZoom: false,
+          withLocalStorage: true,
+          hidden: true,
+          userAgent: widget.userAgent,
+          initialChild: Container(
+            padding: EdgeInsets.only(top: 300),
+            height: Get.height,
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Column(
+                     crossAxisAlignment: CrossAxisAlignment.center,
+                     mainAxisSize: MainAxisSize.max,
+                     children: [
+                         CircularProgressIndicator(
+                           backgroundColor: Colors.lightBlue,
+                         ),
+                         Text("Aguarde...", style: TextStyle(color: Colors.lightBlue))
+                     ],
+                  ),
+                ),
+              ),
+          ),
+      );
   }
 }
 

@@ -135,7 +135,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Icon(Icons.airport_shuttle_outlined, color: Colors.white70),
-                          Text("Login Transportes",
+                          Text("Trânsito Simplificado",
                             style: TextStyle(
                                 color: Colors.white70,
                                 fontWeight: FontWeight.bold
