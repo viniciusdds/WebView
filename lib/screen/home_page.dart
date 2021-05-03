@@ -199,6 +199,51 @@ class _HomeState extends State<Home> {
                   );
                 },
               ),
+              SizedBox(
+                height: 40,
+              ),
+              GestureDetector(
+                child: Card(
+                  elevation: 2.5,
+                  child: Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey[100]),
+                      borderRadius: BorderRadius.all(Radius.circular(4)),
+                      color: Colors.white70,
+                    ),
+                    child: Container(
+                      color: Colors.blue,
+                      padding: EdgeInsets.all(6),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Icon(Icons.archive_rounded, color: Colors.white70),
+                          Text("Processo Novo Nordisk",
+                            style: TextStyle(
+                                color: Colors.white70,
+                                fontWeight: FontWeight.bold
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>WebPage(
+                          "FOTOS DE CARGA",
+                          "http://172.20.220.125:4050/gerencia/MyCMS/conferencia/",
+                          widget.userAgent
+                      ))
+                  );
+                },
+              ),
+              SizedBox(
+                height: 40,
+              ),
             ],
           ),
         )

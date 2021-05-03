@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:get/get.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
 
 class WebPage extends StatefulWidget {
   String title;
@@ -40,9 +42,35 @@ class _WebPageState extends State<WebPage> {
           // javascriptChannels: jsChannels,
           mediaPlaybackRequiresUserGesture: false,
           appBar: AppBar(
-            title: Text(
-              widget.title,
-              style: TextStyle(fontSize: 15),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Text(
+                    widget.title,
+                    style: TextStyle(fontSize: 15),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+
+                 IconButton(
+                      icon: Icon(Icons.qr_code_sharp, size: 30),
+                      onPressed: () async {
+
+                         try{
+
+                           String cameraScanResult = await scanner.scan();
+                            print("resultado: "+cameraScanResult);
+
+                         }catch(e){
+                           print(e);
+                         }
+
+
+                      }
+                  ),
+
+              ],
             ),
           ),
           withZoom: false,

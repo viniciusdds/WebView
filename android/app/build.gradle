@@ -32,6 +32,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     compileSdkVersion 29
+    ndkVersion "22.0.6917172-rc1"
 
     lintOptions {
         disable 'InvalidPackage'

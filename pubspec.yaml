@@ -31,6 +31,7 @@ dependencies:
   get: ^3.25.4
   flutter_webview_plugin: ^0.3.11
   flutter_launcher_icons: ^0.8.1
+  qrscan: ^0.2.22
 
 dev_dependencies:
   flutter_test:
