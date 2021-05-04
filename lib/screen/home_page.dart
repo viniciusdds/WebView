@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:webview/screen/web_page.dart';
+import 'package:qrscan/qrscan.dart';
 
 class Home extends StatefulWidget {
 

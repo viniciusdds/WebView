@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
+import 'dart:async';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 
 class WebPage extends StatefulWidget {
@@ -18,6 +20,7 @@ class WebPage extends StatefulWidget {
 class _WebPageState extends State<WebPage> {
 
   FlutterWebviewPlugin flutterWebViewPlugin = FlutterWebviewPlugin();
+  String data = "";
 
   @override
   void initState() {
@@ -57,14 +60,25 @@ class _WebPageState extends State<WebPage> {
                       icon: Icon(Icons.qr_code_sharp, size: 30),
                       onPressed: () async {
 
-                         try{
+                        await Permission.camera.request();
+                        String barcode = await scanner.scan();
+                        if (barcode == null) {
+                          print('nothing return.');
+                        } else {
+                           print("resultado: "+barcode);
+                        }
 
-                           String cameraScanResult = await scanner.scan();
-                            print("resultado: "+cameraScanResult);
-
-                         }catch(e){
-                           print(e);
-                         }
+                         // try{
+                         //
+                         //   String cameraScanResult = await scanner.scan();
+                         //   setState(() {
+                         //     data = cameraScanResult;
+                         //     print("resultado: "+data);
+                         //   });
+                         //
+                         // }catch(e){
+                         //   print(e);
+                         // }
 
 
                       }
