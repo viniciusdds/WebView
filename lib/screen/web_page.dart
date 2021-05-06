@@ -1,39 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
-import 'dart:async';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
+import 'package:webview/controller/web_controller.dart';
+import 'package:webview/screen/home_page.dart';
+
 
 class WebPage extends StatefulWidget {
   String title;
   String url;
   var userAgent;
+  int tela;
 
-  WebPage(this.title, this.url, this.userAgent);
+  WebPage(this.title, this.url, this.userAgent, this.tela);
   @override
   _WebPageState createState() => _WebPageState();
 }
 
 class _WebPageState extends State<WebPage> {
 
-  FlutterWebviewPlugin flutterWebViewPlugin = FlutterWebviewPlugin();
-  String data = "";
+  WebController webController = Get.find();
 
   @override
   void initState() {
     super.initState();
 
-    flutterWebViewPlugin.close();
+    webController.initPlatformState();
+    webController.flutterWebViewPlugin.close();
   }
 
   @override
   void dispose() {
     super.dispose();
 
-    flutterWebViewPlugin.dispose();
+    webController.flutterWebViewPlugin.dispose();
   }
 
   @override
@@ -45,47 +47,51 @@ class _WebPageState extends State<WebPage> {
           // javascriptChannels: jsChannels,
           mediaPlaybackRequiresUserGesture: false,
           appBar: AppBar(
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(
-                  child: Text(
-                    widget.title,
-                    style: TextStyle(fontSize: 15),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-
-                 IconButton(
-                      icon: Icon(Icons.qr_code_sharp, size: 30),
-                      onPressed: () async {
-
-                        await Permission.camera.request();
-                        String barcode = await scanner.scan();
-                        if (barcode == null) {
-                          print('nothing return.');
-                        } else {
-                           print("resultado: "+barcode);
-                        }
-
-                         // try{
-                         //
-                         //   String cameraScanResult = await scanner.scan();
-                         //   setState(() {
-                         //     data = cameraScanResult;
-                         //     print("resultado: "+data);
-                         //   });
-                         //
-                         // }catch(e){
-                         //   print(e);
-                         // }
-
-
+            title:
+               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                      icon: Icon(Icons.home, size: 30),
+                      onPressed: (){
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home(
+                            userAgent: widget.userAgent,
+                          ))
+                        );
                       }
                   ),
+                  Expanded(
+                    child: Text(
+                      widget.title,
+                      style: TextStyle(fontSize: 15),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
 
-              ],
-            ),
+                  widget.tela == 4 ? IconButton(
+                        icon: Icon(Icons.qr_code_sharp, size: 30),
+                        onPressed: () async {
+
+                          await Permission.camera.request();
+                          String barcode = await scanner.scan();
+                          if (barcode == null) {
+                            print('Nada Retornado!');
+                          } else {
+                               setState(() {
+                                 //print("Valor: "+barcode);
+                                 //print("IP: "+webController.ip);
+                                 webController.capturar(
+                                   barcode,
+                                   webController.ip
+                                 );
+                               });
+                          }
+                        }
+                    ) : SizedBox(),
+                ],
+              ),
           ),
           withZoom: false,
           withLocalStorage: true,
