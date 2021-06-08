@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:get/get.dart';
+
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 import 'package:webview/controller/web_controller.dart';
@@ -54,6 +58,7 @@ class _WebPageState extends State<WebPage> {
                   IconButton(
                       icon: Icon(Icons.home, size: 30),
                       onPressed: (){
+                        webController.clearCache();
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => Home(
@@ -94,7 +99,8 @@ class _WebPageState extends State<WebPage> {
               ),
           ),
           withZoom: false,
-          withLocalStorage: true,
+          withLocalStorage: false,
+          clearCache: true,
           hidden: true,
           userAgent: widget.userAgent,
           initialChild: Container(
