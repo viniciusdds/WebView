@@ -137,7 +137,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Icon(Icons.airport_shuttle_outlined, color: Colors.white70),
-                          Text("Trânsito Simplificado",
+                          Text("Transportes",
                             style: TextStyle(
                                 color: Colors.white70,
                                 fontWeight: FontWeight.bold
@@ -153,7 +153,7 @@ class _HomeState extends State<Home> {
                       context,
                       MaterialPageRoute(builder: (context) =>WebPage(
                           "AURORA EADI | SOROCABA",
-                          "https://clients.eadiaurora.com.br/MyCMS/login_mobile.html",
+                          "https://clients.eadiaurora.com.br/mobile/principal.php",
                           widget.userAgent,
                           3
                       ))
@@ -209,7 +209,7 @@ class _HomeState extends State<Home> {
               Container(
                 padding: EdgeInsets.only(top: 80),
                 child: Text(
-                    "v1.0",
+                    "v2.0",
                     style: TextStyle(
                       fontWeight: FontWeight.bold
                     ),
