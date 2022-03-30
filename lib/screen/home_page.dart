@@ -49,10 +49,10 @@ class _HomeState extends State<Home> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(Icons.arrow_back, color: Colors.white70),
-                          Text("Check List - Coleta",
+                          Icon(Icons.arrow_back, color: Colors.white),
+                          Text("CHECK LIST - COLETA",
                             style: TextStyle(
-                                color: Colors.white70,
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold
                             ),
                           )
@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => WebPage(
-                          "Check List - Coleta",
+                          "CHECK LIST - COLETA",
                           "https://clients.eadiaurora.com.br/check_list_carga/principal.php",
                            widget.userAgent,
                            1
@@ -93,10 +93,10 @@ class _HomeState extends State<Home> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(Icons.arrow_forward, color: Colors.white70),
-                          Text("Check List - Entrada",
+                          Icon(Icons.arrow_forward, color: Colors.white),
+                          Text("CHECK LIST - ENTRADA",
                             style: TextStyle(
-                                color: Colors.white70,
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold
                             ),
                           )
@@ -136,10 +136,10 @@ class _HomeState extends State<Home> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(Icons.airport_shuttle_outlined, color: Colors.white70),
-                          Text("Transportes",
+                          Icon(Icons.airport_shuttle_outlined, color: Colors.white),
+                          Text("TRANSPORTES",
                             style: TextStyle(
-                                color: Colors.white70,
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold
                             ),
                           )
@@ -179,10 +179,10 @@ class _HomeState extends State<Home> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(Icons.photo_camera, color: Colors.white70),
-                          Text("Fotos Operacionais",
+                          Icon(Icons.photo_camera, color: Colors.white),
+                          Text("FOTOS OPERRACIONAIS",
                             style: TextStyle(
-                                color: Colors.white70,
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold
                             ),
                           )
